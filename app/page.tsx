@@ -97,6 +97,17 @@ export default function Home() {
   const [error, setError] = useState("");
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>({});
 
+  useEffect(() => {
+    if (result && !isLoading) {
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+        });
+      }, 150); // Small delay to let Framer Motion mount the DOM elements
+    }
+  }, [result, isLoading]);
+
   const handleOptimize = async () => {
     if (!postContent.trim()) {
       setError("Veuillez coller un brouillon pour commencer.");
@@ -158,10 +169,11 @@ export default function Home() {
             <span className="text-xs uppercase tracking-[0.2em] text-[var(--color-primary-light)] font-light drop-shadow-sm">Pour ceux qui viendront après</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-serif text-transparent bg-clip-text bg-gradient-to-b from-white via-neutral-200 to-neutral-600 mb-6 tracking-wide drop-shadow-2xl">
-            Élevez votre Voix
+            Élevez votre voix
           </h1>
           <p className="text-neutral-400 text-lg max-w-xl mx-auto font-light leading-relaxed tracking-wide">
-            Libérez votre contenu de son poids terrestre. Insérez votre idée, et laissez notre IA la suspendre dans un équilibre parfait entre poésie et impact.
+            Libérez vos idées de leur gravité.<br />
+            Déposez vos mots dans l’ombre, et laissez l’IA les polir jusqu’à ce qu’ils deviennent lumière entre élégance fragile et impact tranchant.
           </p>
         </motion.div>
 
@@ -193,7 +205,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out"></div>
                 <span className="relative flex items-center gap-2">
-                  {isLoading ? "Lévitation..." : "Affranchir"}
+                  {isLoading ? "Lévitation..." : "Lancer l'expédition"}
                   {!isLoading && <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
                 </span>
               </button>
