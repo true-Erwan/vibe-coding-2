@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000; /* Pure deep black void */
+  --foreground: #f3f4f6; /* Sharp white highlights */
 }
 
 @theme inline {
@@ -10,17 +10,42 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Expedition 33 / Antigravity colors - TRUE GOLD */
+  --color-primary: #FFD700;       /* pure gold as requested */
+  --color-primary-light: #FFEA70; /* pure gold bright */
+  --color-primary-dark: #B8860B;  /* pure gold dark shade */
+  --color-accent: #dc2626;        /* Red petals accent */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, sans-serif;
+  /* Cinematic lighting: very constrained soft warm gold light so the black remains absolute */
+  background-image: 
+    radial-gradient(circle at 50% 10%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 80%, rgba(220, 38, 38, 0.02) 0%, #000000 50%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+@keyframes wind-1 {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translate(30vw, -110vh) rotate(540deg); opacity: 0; }
+}
+
+@keyframes wind-2 {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translate(-20vw, -120vh) rotate(-360deg); opacity: 0; }
+}
+
+@keyframes wind-3 {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translate(15vw, -130vh) rotate(720deg); opacity: 0; }
 }
